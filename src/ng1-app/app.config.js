@@ -4,6 +4,7 @@ angular.
   module('phonecatApp').
   config(['$routeProvider','$locationProvider',
     function config($routeProvider,$locationProvider) {
+      $locationProvider.hashPrefix('')
       $routeProvider.
         when('/', {
           template: '<phone-list></phone-list>'
@@ -11,7 +12,8 @@ angular.
         when('/phones/:phoneId', {
           template: '<phone-detail></phone-detail>'
         }).
-        otherwise('/');
-        $locationProvider.html5Mode(true)  
+        otherwise({
+          template: ''
+        });
     }
   ]);
